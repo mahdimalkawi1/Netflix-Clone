@@ -8,10 +8,15 @@ function Home() {
     async function getTrendingMovie() {
 
         const url = process.env.REACT_APP_SERVER_URL;
+        console.log("url",url)
         const response = await fetch(`${url}/trending`);
-        const movieData = await response.json();
-        setTrendingMovie(movieData);
+                // const response = await fetch('https://m-movieslibrary.onrender.com/trending');
 
+        console.log("reponse",response)
+        const movieData = await response.json();
+        console.log("movieData",movieData)
+        setTrendingMovie(movieData);
+       console.log("trendingmovie",trendingMovie)
     }
 
     useEffect(() => {
