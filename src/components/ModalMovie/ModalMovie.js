@@ -25,6 +25,7 @@ let data = {
     poster_path:props.movie.poster_path,
     comment: props.movie.comment
 }
+console.log("hiiii",data);
  const response = await fetch (url,{
     method: "POST",
     headers: {
@@ -52,11 +53,11 @@ let data = {
                     <Form.Label>Comment</Form.Label>
                     <Form.Control type="text" ref={commentRef} rows={3} />
                 </Form.Group>
-                <Button variant='primary' type='submit' onClick={(e)=>addToFavHandler(e)} >
+                <Button variant='primary' type='submit' onClick={(e)=>submitHandler(e)} >
                     Submit
                 </Button>
 
-                <Button variant='primary' type='submit' onClick={(e)=>submitHandler(e)} >
+                <Button variant='primary' type='submit' onClick={(e)=>addToFavHandler(e)} >
                     Add to fav
                 </Button>
             </Form>

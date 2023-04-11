@@ -3,11 +3,11 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 
-function FavList(){
+function FavList(props){
 
     const [favMovies,setFavMovies ] = useState()
 async function getFavMovie(){
-    let url = `${process.env.REACT_APP_SERVER_URL}/favorite`
+    let url = `${process.env.REACT_APP_SERVER_URL}/getMovies`
 
     let response = await fetch(url,{
         method:'GET',
@@ -27,7 +27,7 @@ async function handleDelete(id){
 if (response.status ===204){
     getFavMovie()
 
-    // alert("successfully deleted")
+//     // alert("successfully deleted")
 }
 
 }
@@ -46,7 +46,7 @@ async function handleUpdate(id,data){
 useEffect(()=>{
     getFavMovie()
 
-    console.log(favMovies)
+    // console.log(favMovies)
 
 },[])
 
@@ -54,15 +54,15 @@ return(
     <>
     <h2>this is Fav Movie Page</h2>
     {
-        favMovies && favMovies.map (props.movie => {
+        favMovies && favMovies.map (movie => {
              return (
     
       <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500/${props.movie.poster_path}`} />
+        <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
         <Card.Body>
-          <Card.Title>{props.movie.title}</Card.Title>
-          <Button variant="primary" onClick={()=>handleDelete(props.movie.id)} >Delete</Button>
-          <Button variant="primary" onClick={()=>handleUpdate(props.movie.id)} >Update</Button>
+          <Card.Title>{movie.title}</Card.Title>
+          <Button variant="primary" onClick={()=>handleDelete(movie.id)} >Delete</Button>
+          <Button variant="primary" onClick={()=>handleUpdate(movie.id)} >Update</Button>
 
         </Card.Body>
       </Card>
