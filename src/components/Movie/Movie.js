@@ -19,7 +19,7 @@ function Movie(props) {
         </Card.Body>
       </Card>
 
-      <ModalMovie show={show} movie={props.movie} handleClose={handleClose} />
+      <ModalMovie show={show} movie={props.movie} handleClose={handleClose} commentHandler={props.commentHandler} />
     </>
   )
 }
